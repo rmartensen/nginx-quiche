@@ -1,0 +1,18 @@
+language: shell
+
+os: osx
+
+install:
+  - brew update
+  - brew install cmake go rust || true
+
+script:
+- ./build.sh
+
+before_cache:
+- brew cleanup
+
+cache:
+  directories:
+  - "/usr/local/Homebrew"
+  - "$HOME/Library/Caches/Homebrew"
