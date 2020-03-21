@@ -1,6 +1,10 @@
 language: shell
 
 os: osx
+osx_image:
+  - xcode11.3
+  - xcode10.3
+  - xcode9.3
 
 install:
   - brew update
