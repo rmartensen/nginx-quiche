@@ -8,15 +8,20 @@ osx_image:
 
 install:
   - brew update
-  - brew install cmake go rust || true
+  - brew install rust || true
+  - brew upgrade cmake go
 
 script:
 - ./build.sh
 
 before_cache:
 - brew cleanup
+- rm -rf nginx-1.16.1
 
 cache:
   directories:
+  - "$HOME/.cargo"
   - "/usr/local/Homebrew"
   - "$HOME/Library/Caches/Homebrew"
+  - "$HOME/Library/Caches/go-build"
+  - "$TRAVIS_BUILD_DIR/quiche"

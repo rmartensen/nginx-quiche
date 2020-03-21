@@ -3,7 +3,15 @@
 curl -O https://nginx.org/download/nginx-1.16.1.tar.gz
 tar xzvf nginx-1.16.1.tar.gz
 
-git clone --recursive https://github.com/cloudflare/quiche
+if [ ! -d quiche/.git ]; then
+  git clone --recursive https://github.com/cloudflare/quiche
+  git submodule update --recursive
+else
+  pushd quiche
+  git pull
+  git submodule update --recursive
+  popd
+fi
 
 pushd nginx-1.16.1
 patch -p01 < ../quiche/extras/nginx/nginx-1.16.patch
