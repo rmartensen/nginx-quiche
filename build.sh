@@ -24,4 +24,4 @@ patch -p01 < ../quiche/extras/nginx/nginx-1.16.patch
        --with-http_v3_module                   \
        --with-openssl=../quiche/deps/boringssl \
        --with-quiche=../quiche
-make -j2
+make -j $(nproc)
